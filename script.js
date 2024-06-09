@@ -51,7 +51,19 @@ function setup() {
 	}, 2000);
 }
 
-function mouseDragged() {
+function touchMoved(event) {
+	event.preventDefault();
+	if (!flag) {
+		background(255);
+		flag = 1;
+	}
+	for (var i in touches) {
+		particles.push(new Particle(createVector(touches[i].x, touches[i].y)));
+	}
+}
+
+function mouseDragged(event) {
+	event.preventDefault();
 	if (!flag) {
 		background(255);
 		flag = 1;
